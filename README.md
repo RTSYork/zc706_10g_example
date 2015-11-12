@@ -22,3 +22,9 @@ The hardware design is then reasonably simple again - the accelerator is connect
 Side note: It is probably OK to remove one of these FIFOs if required; because the FIFO on the receive side will only start relaying data when it has a full packet, and can provide valid data on every cycle, it will not cause the situation where the packet processor is prevented from relaying a data word on one cycle because it is starved, as described above. Similarly, if a FIFO is used on the transmit side but not the receive side, it will wait for a complete transmit packet before relaying and hence it does not matter if the packet processor does not emit a data word on every cycle.
 
 The software project in this case is extremely simple - it just sets up the Si5324 clock.
+
+Building
+--------
+The project can be built using the two "build_project.sh" scripts in the hardware directories. These will create a Vivado project, create the block design, synthesize and implement the design. To perform this process, you must have a license for the Xilinx Ten-Gigabit MAC core.
+
+After building, the projects can then be opened in Vivado and exported to SDK to build the software projects. The code in the {master,slave}_sw folders can then be imported into SDK to be built and run on the platforms.
