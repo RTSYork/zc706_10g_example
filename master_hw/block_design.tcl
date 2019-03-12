@@ -10,7 +10,7 @@
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2015.2
+set scripts_vivado_version 2018.3
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
@@ -155,7 +155,7 @@ proc create_root_design { parentCell } {
   set txp [ create_bd_port -dir O txp ]
 
   # Create instance: axi_10g_ethernet_0, and set properties
-  set axi_10g_ethernet_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_10g_ethernet:3.0 axi_10g_ethernet_0 ]
+  set axi_10g_ethernet_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_10g_ethernet:3.1 axi_10g_ethernet_0 ]
   set_property -dict [ list CONFIG.SupportLevel {1}  ] $axi_10g_ethernet_0
 
   # Create instance: axi_dma_0, and set properties
@@ -170,11 +170,11 @@ proc create_root_design { parentCell } {
   set_property -dict [ list CONFIG.NUM_MI {1} CONFIG.NUM_SI {3}  ] $axi_interconnect_1
 
   # Create instance: axis_data_fifo_0, and set properties
-  set axis_data_fifo_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axis_data_fifo:1.1 axis_data_fifo_0 ]
+  set axis_data_fifo_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axis_data_fifo:2.0 axis_data_fifo_0 ]
   set_property -dict [ list CONFIG.FIFO_DEPTH {2048} CONFIG.FIFO_MODE {2}  ] $axis_data_fifo_0
 
   # Create instance: axis_data_fifo_1, and set properties
-  set axis_data_fifo_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axis_data_fifo:1.1 axis_data_fifo_1 ]
+  set axis_data_fifo_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axis_data_fifo:2.0 axis_data_fifo_1 ]
   set_property -dict [ list CONFIG.FIFO_DEPTH {2048} CONFIG.FIFO_MODE {2}  ] $axis_data_fifo_1
 
   # Create instance: const_sig_detect_high, and set properties
