@@ -1,7 +1,7 @@
 Zynq Ten-Gigabit Example
 ========================
 
-This repository contains an example project for two ZC706 boards communicating over a 10-Gigabit network, using optical transcievers in the SFP+ cages on the boards.
+This repository contains an example project for two ZC706 boards communicating over a 10-Gigabit network, using optical transceivers in the SFP+ cages on the boards.
 
 The project structure is as follows:
 
